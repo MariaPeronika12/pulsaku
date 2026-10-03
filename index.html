@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PulsaKu - Isi Pulsa & Paket Data Cepat</title>
+<link rel="stylesheet" href="css/style.css"></head><body>
+<header><div class="nav"><span class="logo">📱 PulsaKu</span>
+<button data-v="home" class="on">Beranda</button><button data-v="pulsa">Isi Pulsa</button><button data-v="data">Paket Data</button><button data-v="promo">Promo</button><button data-v="riwayat">Riwayat</button><button data-v="bantuan">Bantuan</button></div></header>
+<main>
+
+<section class="view on" id="home">
+<div class="hero"><div><h1>Isi pulsa cepat, murah, 24 jam</h1><p>Semua operator, proses otomatis dalam hitungan detik. Bayar pakai QRIS, e-wallet, atau transfer bank.</p><button class="btn alt" style="width:auto" onclick="show('pulsa')">Beli Pulsa Sekarang</button></div>
+<div class="card" style="margin:0"><h3>Isi cepat</h3><label>Nomor HP</label><input id="qn" inputmode="numeric" placeholder="0812xxxxxxxx"><button class="btn" style="margin-top:12px" onclick="quick()">Lanjut</button></div></div>
+<h2>Kenapa PulsaKu?</h2>
+<div class="grid3"><div class="card"><h3>⚡ Proses kilat</h3><span style="color:var(--mu)">Rata-rata pulsa masuk kurang dari 10 detik setelah pembayaran.</span></div><div class="card"><h3>🔒 Aman & terpercaya</h3><span style="color:var(--mu)">Transaksi terenkripsi dan jaminan uang kembali bila gagal.</span></div><div class="card"><h3>💸 Harga transparan</h3><span style="color:var(--mu)">Tanpa biaya tersembunyi. Total terlihat sebelum bayar.</span></div></div>
+<h2>Operator yang didukung</h2><div class="grid" id="ops"></div>
+<h2>Cara membeli</h2><div class="grid3"><div class="card"><b>1.</b> Masukkan nomor HP, operator terdeteksi otomatis.</div><div class="card"><b>2.</b> Pilih nominal atau paket data.</div><div class="card"><b>3.</b> Pilih metode bayar & selesaikan pembayaran.</div></div>
+<div class="card grid"><div class="stat"><b>2,4 jt+</b>transaksi</div><div class="stat"><b>6</b>operator</div><div class="stat"><b>99,8%</b>sukses</div><div class="stat"><b>24/7</b>layanan</div></div>
+<h2>Kata pelanggan</h2><div class="grid3"><div class="card">“Tengah malam kehabisan pulsa, 5 detik langsung masuk.” <br><small>— Rina, Bandung</small></div><div class="card">“Harga paket datanya paling murah dibanding yang lain.” <br><small>— Dimas, Surabaya</small></div><div class="card">“CS ramah, refund cepat waktu transaksi gagal.” <br><small>— Sari, Jakarta</small></div></div>
+</section>
+
+<section class="view" id="pulsa"><h2 style="margin-top:4px">Isi Pulsa</h2>
+<div class="two"><div>
+<div class="card"><label>Nomor HP</label><input id="num" inputmode="numeric" maxlength="15" placeholder="Contoh: 081234567890"><div id="opinfo"></div>
+<label>Pilih nominal</label><div class="grid" id="nom"></div></div>
+<div class="card"><h3>Metode pembayaran</h3><div class="grid" id="pay"></div></div>
+<div class="card"><label style="margin-top:0">Kode promo (coba HEMAT5 atau PULSA10)</label><div style="display:flex;gap:8px"><input id="promo" placeholder="Kode promo"><button class="btn" style="width:auto" onclick="applyPromo()">Pakai</button></div><div id="pmsg" style="font-size:13px;margin-top:6px"></div></div>
+</div>
+<div><div class="card" style="position:sticky;top:70px"><h3>Ringkasan pesanan</h3><div id="sum"></div><button class="btn" id="buy" style="margin-top:12px" disabled onclick="checkout()">Bayar Sekarang</button></div></div></div>
+</section>
+
+<section class="view" id="data"><h2 style="margin-top:4px">Paket Data</h2>
+<div class="card"><label style="margin-top:0">Nomor HP</label><input id="dnum" inputmode="numeric" placeholder="081234567890"><div id="dinfo"></div></div>
+<div class="grid3" id="pkgs"></div>
+<div class="card" style="margin-top:12px"><div class="row t"><span id="dsel">Pilih paket</span><span id="dtot">-</span></div><button class="btn" id="dbuy" disabled onclick="buyData()">Beli Paket (QRIS)</button></div>
+</section>
+
+<section class="view" id="promo"><h2 style="margin-top:4px">Promo Spesial</h2><div class="grid3">
+<div class="card"><span class="badge">HEMAT5</span><h3>Diskon 5%</h3>Maksimal potongan Rp5.000 untuk semua pembelian pulsa.</div>
+<div class="card"><span class="badge">PULSA10</span><h3>Potongan Rp1.000</h3>Berlaku minimal pembelian Rp20.000.</div>
+<div class="card"><span class="badge">GOPAY</span><h3>Bebas biaya e-wallet</h3>Bayar dengan GoPay/DANA, biaya layanan Rp0 setiap Jumat.</div></div>
+<div class="card"><h3>Program Referral</h3>Ajak teman dan dapatkan cashback Rp2.500 tiap teman melakukan transaksi pertama.</div></section>
+
+<section class="view" id="riwayat"><h2 style="margin-top:4px">Riwayat Transaksi</h2><div class="card tw"><div id="hist"></div></div></section>
+
+<section class="view" id="bantuan"><h2 style="margin-top:4px">Pusat Bantuan</h2>
+<div class="two"><div class="card"><h3>FAQ</h3>
+<details><summary>Berapa lama pulsa masuk?</summary>Umumnya 1-10 detik. Jika operator sibuk bisa sampai 15 menit.</details>
+<details><summary>Pulsa tidak masuk, bagaimana?</summary>Transaksi gagal otomatis di-refund ke metode pembayaran Anda maksimal 1x24 jam.</details>
+<details><summary>Apakah ada biaya admin?</summary>Ada biaya layanan Rp1.000 per transaksi, ditambah biaya metode bayar tertentu.</details>
+<details><summary>Salah nomor tujuan?</summary>Transaksi tidak dapat dibatalkan setelah sukses. Pastikan nomor benar sebelum membayar.</details>
+<details><summary>Operator apa saja yang didukung?</summary>Telkomsel, Indosat, XL, Axis, Tri, dan Smartfren.</details></div>
+<div class="card"><h3>Hubungi kami</h3><label>Nama</label><input id="cn"><label>Pesan</label><input id="cm"><button class="btn" style="margin-top:12px" onclick="alert('Terima kasih! Pesan Anda terkirim (demo).');cn.value=cm.value=''">Kirim</button><p style="color:var(--mu);font-size:13px">WhatsApp: 0812-0000-0000<br>Email: cs@pulsaku.example<br>Jam layanan: 24 jam</p></div></div></section>
+</main>
+<footer>© 2026 PulsaKu · Situs demo, transaksi bersifat simulasi dan tidak memproses pembayaran sungguhan.</footer>
+
+<div class="modal" id="md"><div class="card" id="mb"></div></div>
+<script src="js/app.js"></script></body></html>
